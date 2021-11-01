@@ -1,10 +1,3 @@
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-}
-
 .career-section {
   padding: 10rem 0;
 }
@@ -34,7 +27,12 @@ body {
 .career-section .img-logo {
   max-width: 250px;
   max-height: 400px;
-  overflow: hidden;
+
+  -moz-width: 250px;
+  -moz-height: 400px;
+
+  -o-width: 250px;
+  -o-height: 400px;
 }
 
 .career-section .entry {
