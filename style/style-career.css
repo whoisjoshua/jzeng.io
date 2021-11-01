@@ -23,3 +23,13 @@
     width: 30%;
   }
 }
+
+
+.career-section .img-logo {
+  max-width: 250px;
+  max-height: 400px;
+}
+
+.career-section .entry {
+  min-height: 150px;
+}
