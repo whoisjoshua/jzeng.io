@@ -25,14 +25,9 @@
 }
 
 .career-section .img-logo {
+  height: 100%;
   max-width: 250px;
   max-height: 400px;
-
-  -moz-width: 250px;
-  -moz-height: 400px;
-
-  -o-width: 250px;
-  -o-height: 400px;
 }
 
 .career-section .entry {
