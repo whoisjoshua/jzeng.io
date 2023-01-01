@@ -1,15 +1,11 @@
 @charset "UTF-8";
 /*!
-* Start Bootstrap - Grayscale v7.0.3 (https://startbootstrap.com/theme/grayscale)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
-*/
-/*!
- * Bootstrap v5.1.0 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
+ * Modified by Joshua Zeng
+ *
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
  */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -7957,6 +7953,11 @@ textarea.form-control-lg {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
+.text-white-80 {
+  --bs-text-opacity: 1;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
 .text-reset {
   --bs-text-opacity: 1;
   color: inherit !important;
@@ -11541,6 +11542,18 @@ body {
   }
 }
 
+.blur-3px::before {
+  filter: blur(3px);
+  }
+
+.blur-6px::before {
+filter: blur(6px);
+}
+
+.blur-9px::before {
+filter: blur(9px);
+}
+
 .btn {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
@@ -11557,6 +11570,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .video-container video {
@@ -11568,6 +11582,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  filter:brightness(50%);
+  filter:sepia(1) hue-rotate(149deg);
 }
 
 .masthead {
@@ -11589,21 +11605,22 @@ body {
   justify-content: center;
 }
 .masthead h1, .masthead .h1 {
-  /*font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
-  font-family: "Poppins", Sans-serif;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 2.2px;
-  background: rgba(237, 228, 225, 0.95);
+  text-shadow: 1px 3px 11px rgba(0,0,0,.3);
+  background: rgba(255, 255, 255, 1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
           background-clip: text;
 }
 .masthead h2, .masthead .h2 {
-  font-family: "Poppins", Sans-serif;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   max-width: 20rem;
   font-size: 1rem;
   line-height: 10rem;
+  text-shadow: 1px 3px 11px rgba(0,0,0,.3);
 }
 @media (min-width: 768px) {
   .masthead h1, .masthead .h1 {
@@ -11620,11 +11637,11 @@ body {
     font-size: 7.5vw;
     font-weight: bold;
     line-height: 8vw;
-    letter-spacing: 0.8rem;
   }
   .masthead h2, .masthead .h2 {
     max-width: 30rem;
     font-size: 1.5rem;
+    font-weight: bold;
   }
 }
 
@@ -11752,8 +11769,8 @@ body {
   -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
   transform: rotate(45deg);
    
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
+  border-right: 2px solid whitesmoke;
+  border-bottom: 2px solid whitesmoke;
   margin: 0 0 3px 4px;
   
   width: 18px;
@@ -11814,7 +11831,7 @@ body {
   width: 27px;
   border-radius: 14px;
   transform: none;
-  border: 2px solid white;
+  border: 2px solid whitesmoke;
   top: 170px;
 }
 
