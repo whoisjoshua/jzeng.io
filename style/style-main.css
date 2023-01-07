@@ -156,6 +156,10 @@ p {
   margin-bottom: 1rem;
 }
 
+.pre-line {
+  white-space: pre-line;
+}
+
 abbr[title],
 abbr[data-bs-original-title] {
   -webkit-text-decoration: underline dotted;
@@ -3899,7 +3903,7 @@ textarea.form-control-lg {
   background-color: transparent;
 }
 
-.dropdown-menu.show {
+.dropdown-menu.show {#64a19d
   display: block;
 }
 
@@ -11650,7 +11654,32 @@ filter: blur(9px);
   background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
 }
 .about-section p {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
+}
+
+/*
+.about-section .box {
+  border-radius: 15px;
+  border: 2px solid #64a19d;
+  padding: 20px;
+  width: 200px;
+  height: 150px; 
+  margin: 10px;
+}
+*/
+
+.about-section .i {
+  color: white;
+}
+
+.about-section .text-headline {
+  text-align: left;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.about-section .fa-solid {
+  position: relative;
+  
 }
 
 .projects-section {

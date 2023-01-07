@@ -1,11 +1,14 @@
 /*!
-* Start Bootstrap - Grayscale v7.0.3 (https://startbootstrap.com/theme/grayscale)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
+ *
+ * Scripts
+ * 
+ */
+
+document.getElementById("header-name").innerHTML = "Joshua\nZeng";
+
+/*!
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
+ */
 
 window.addEventListener('DOMContentLoaded', event => {
 
