@@ -3,26 +3,27 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" content="Joshua Zeng: principal software engineer focused on DevOps and automation." />
+        <meta name="author" content="Joshua Zeng" />
         <title>jzeng.io</title>
         <link rel="icon" type="image/png" href="./res/favicon.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/style/style-main.css" rel="stylesheet" />
-        <link href="/style/style-career.css" rel="stylesheet" />
+        <link href="/style/style-modern.css" rel="stylesheet" />
+        <script>document.documentElement.classList.add('js');</script>
 
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#page-top">jzeng.io</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +35,6 @@
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#careers">Career</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Hobbies</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -44,9 +44,11 @@
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="video-container">
-                    <video autoplay loop muted plays-inline id="bg-video">
+                    <!-- Two copies are crossfaded at the loop point by js/scripts.js for a seamless loop -->
+                    <video autoplay loop muted playsinline preload="auto" id="bg-video" aria-hidden="true">
                         <source src="https://media.githubusercontent.com/media/whoisjoshua/media/main/bg_drop_4k.mp4" type="video/mp4">
                     </video>
+                    <video muted playsinline preload="auto" aria-hidden="true"></video>
                 </div>
                 <div class="d-flex justify-content-center z-index-100">
                     <div class="text-center">
@@ -70,214 +72,164 @@
             </div>
         </header>
         <!-- About-->
-        <section class="about-section text-center" id="about">
+        <section class="section about-section" id="about">
             <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="text-white mb-4">About</h2>
-                        <p class="text-white-50">
-                            Joshua Zeng is a full-time principal software engineer at Northrop Grumman, a part-time MSCS student at Georgia Tech, and an electrical engineer graduate at UCSD. Since his transition from EE to CS, he has been taking his time to learn new technologies and explore the world of CS. He loves to make Windows, Linux, Android, and web applications and more. <br>
-                            You can check out 
-                            <a href="/res/JoshuaZeng_Resume_Software.pdf">Joshua's resume here</a>
-                            if you would like a more traditional view of his career experiences.<br><br>
-
-                            Aside from Josh's career, he loves to explore new hobbies, bring smiles with his talents, and enjoy all good things in this world. This entails hiking, breakdancing, playing cello and guitar, making digital art, gaming, and much more.
-                        </p>
+                <div class="wrap">
+                    <div class="section-eyebrow reveal">01 · About</div>
+                    <p class="about-lead reveal" style="--d:.06s">Principal software engineer focused on <span class="accent">DevOps and automation</span>. <span class="muted">I build the pipelines, internal tools, and infrastructure that keep engineering teams shipping.</span></p>
+                    <div class="about-intro reveal" style="--d:.12s">
+                        <p>I started in electrical engineering at UC San Diego, moved into software, and later completed an M.S. in Computer Science at Georgia Tech. I enjoy building across Windows, Linux, Android, and the web, and I'm always picking up something new.</p>
+                        <a class="text-link" href="/res/JoshuaZeng_Resume_Software.pdf" target="_blank" rel="noopener">View résumé <i class="fas fa-external-link-alt"></i></a>
                     </div>
+                    <ul class="rows">
+                        <li class="row-item reveal">
+                            <div class="row-item__label">Currently</div>
+                            <div class="row-item__value">Principal Software Engineer <span class="sub">at Northrop Grumman</span></div>
+                            <div class="row-item__meta">San Diego, CA</div>
+                        </li>
+                        <li class="row-item reveal">
+                            <div class="row-item__label">Focus</div>
+                            <div class="row-item__value dots"><span>CI/CD</span><span>Infrastructure as code</span><span>Internal tool development</span><span>Automation</span></div>
+                            <div class="row-item__meta"></div>
+                        </li>
+                        <li class="row-item reveal">
+                            <div class="row-item__label">Education</div>
+                            <div class="row-item__value">
+                                <p>M.S. Computer Science <span class="sub">· Georgia Tech</span><span class="sub only-sm"> · 2025</span></p>
+                                <p>B.S. Electrical &amp; Computer Engineering <span class="sub">· UC San Diego</span><span class="sub only-sm"> · 2018</span></p>
+                            </div>
+                            <div class="row-item__meta hide-sm"><p>2025</p><p>2018</p></div>
+                        </li>
+                        <li class="row-item reveal">
+                            <div class="row-item__label">Toolkit</div>
+                            <div class="row-item__value dots"><span>Python</span><span>C#</span><span>C++</span><span>Jenkins</span><span>Terraform</span><span>Ansible</span><span>Docker</span><span>AWS</span></div>
+                            <div class="row-item__meta"></div>
+                        </li>
+                        <li class="row-item reveal">
+                            <div class="row-item__label">Off the clock</div>
+                            <div class="row-item__value dots"><span>Hiking</span><span>Breakdancing</span><span>Cello</span><span>Guitar</span><span>Digital art</span><span>Gaming</span></div>
+                            <div class="row-item__meta"></div>
+                        </li>
+                    </ul>
                 </div>
-                <img class="img-fluid" src="res/img/ipad.png" alt="..." />
             </div>
         </section>
         <!-- Career -->
-        <!-- TODO: FINISH THIS AND STYLES FOR THIS -->
-        <!-- Create grid of logos; nav to new page with pictures/descriptions/demos of projects  -->
-        <section class="career-section bg-light" id="careers">
+        <section class="section career-section" id="careers">
             <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="text-black-50 mb-4 text-center">Careers</h2><br><br>
-                    </div>
-                </div>
-
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center entry">
-                    <div class="col-xl-2 col-lg-2"></div>
-                    <div class="col-xl-4 col-lg-3"><img class="img-logo mb-3 mb-lg-0" src="res/img/career/ng-logo.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Northrop Grumman</h4>
-                            <p class="text-black-50 mb-0">Principal Software Engineer</p>
-                            <p class="text-black-50 mb-0">Aug 2021 - Present</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2"></div>
-                </div>
-                
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center entry">
-                    <div class="col-xl-2 col-lg-2"></div>
-                    <div class="col-xl-4 col-lg-3"></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Northrop Grumman</h4>
-                            <p class="text-black-50 mb-0">Software Engineer II</p>
-                            <p class="text-black-50 mb-0">Oct 2019 - Aug 2021</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2"></div>
-                </div>
-                
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center entry">
-                    <div class="col-xl-2 col-lg-2"></div>
-                    <div class="col-xl-4 col-lg-3"><img class="img-logo mb-3 mb-lg-0" src="res/img/career/bae-logo.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>BAE Systems</h4>
-                            <p class="text-black-50 mb-0">Software Engineer</p>
-                            <p class="text-black-50 mb-0">Aug 2018 - Oct 2019</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2"></div>
-                </div>
-                
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center entry">
-                    <div class="col-xl-2 col-lg-2"></div>
-                    <div class="col-xl-4 col-lg-3"><img class="img-logo mb-3 mb-lg-0" src="res/img/career/qualcomm-logo.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Qualcomm</h4>
-                            <p class="text-black-50 mb-0">Camera Software Engineer</p>
-                            <p class="text-black-50 mb-0">Jun 2017 - Sept 2017</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2"></div>
-                </div>
-                
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center entry">
-                    <div class="col-xl-2 col-lg-2"></div>
-                    <div class="col-xl-4 col-lg-3"><img class="img-logo mb-3 mb-lg-0" src="res/img/career/google-logo.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Google</h4>
-                            <p class="text-black-50 mb-0">Camera Test Engineer</p>
-                            <p class="text-black-50 mb-0">Jun 2017 - Sept 2017</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2"></div>
-                </div>
-                
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center entry">
-                    <div class="col-xl-2 col-lg-2"></div>
-                    <div class="col-xl-4 col-lg-3"></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Google</h4>
-                            <p class="text-black-50 mb-0">Camera Test Engineer</p>
-                            <p class="text-black-50 mb-0">Jun 2016 - Sept 2016</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2"></div>
-                </div>
-
-            </div>
-        </section>
-        <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5">
-                <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="res/img/bg-masthead.jpg" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Featured Project</h4>
-                            <p class="text-black-50 mb-0">Have featured project description here.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project One Row-->
-                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="res/img/demo-image-01.jpg" alt="..." /></div>
-                    <div class="col-lg-6">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">Project #1</h4>
-                                    <p class="mb-0 text-white-50">Description here</p>
-                                    <hr class="d-none d-lg-block mb-0 ms-0" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Two Row-->
-                <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="res/img/demo-image-02.jpg" alt="..." /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Project #2</h4>
-                                    <p class="mb-0 text-white-50">Description here</p>
-                                    <hr class="d-none d-lg-block mb-0 me-0" />
-                                </div>
-                            </div>
-                        </div>
+                <div class="wrap">
+                    <div class="section-eyebrow reveal">02 · Career</div>
+                    <h2 class="section-title reveal" style="--d:.06s">Experience</h2>
+                    <div class="timeline">
+                        <div class="timeline__line" aria-hidden="true"><div class="timeline__line-fill"></div></div>
+                        <!-- Entries are rendered from the CAREER data in js/career.js -->
+                        <ol class="timeline__list" id="career-list"></ol>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact-->
-        <section class="contact-section bg-black" id="contact">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Address</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">San Diego, CA</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Email</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="#!">joshua.j.zeng@gmail.com</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Phone</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">+1 (XXX) XXX-XXXX</div>
-                            </div>
-                        </div>
+            <dialog class="exp-dialog" id="exp-dialog">
+                <div class="exp-dialog__panel">
+                    <button class="dlg-close" type="button" aria-label="Close"><i class="fas fa-times"></i></button>
+                    <div class="dlg-content"></div>
+                    <div class="dlg-nav">
+                        <button type="button" data-dir="-1"><i class="fas fa-arrow-left"></i> <span>Newer</span></button>
+                        <button type="button" data-dir="1"><span>Older</span> <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
-                <div class="social d-flex justify-content-center">
-                    <a class="mx-2" href="https://www.instagram.com/thatvibrato/"><i class="fab fa-instagram"></i></a>
-                    <a class="mx-2" href="https://www.facebook.com/JoshZeng/"><i class="fab fa-facebook-f"></i></a>
-                    <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+            </dialog>
+        </section>
+        <!-- Projects -->
+        <section class="section projects-section" id="projects">
+            <div class="container px-4 px-lg-5">
+                <div class="wrap">
+                    <div class="section-eyebrow reveal">03 · Projects</div>
+                    <h2 class="section-title reveal" style="--d:.06s">Selected work</h2>
+                    <!--
+                        To add a project, copy one <li class="project"> block.
+                        Swap the href, image, title, description, tags and year.
+                    -->
+                    <ul class="project-list">
+                        <li class="project reveal">
+                            <a href="#!">
+                                <span class="project__num">01</span>
+                                <div class="project__thumb"><img src="res/img/bg-masthead.jpg" alt="" loading="lazy" /></div>
+                                <h3 class="project__title">Project title</h3>
+                                <div class="project__meta">2026 <i class="fas fa-arrow-right"></i></div>
+                                <p class="project__desc">A short, one-line description of what this project does and why it's interesting.</p>
+                                <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Docker</span></div>
+                            </a>
+                        </li>
+                        <li class="project reveal">
+                            <a href="#!">
+                                <span class="project__num">02</span>
+                                <div class="project__thumb"><img src="res/img/demo-image-01.jpg" alt="" loading="lazy" /></div>
+                                <h3 class="project__title">Project title</h3>
+                                <div class="project__meta">2025 <i class="fas fa-arrow-right"></i></div>
+                                <p class="project__desc">A short, one-line description of what this project does and why it's interesting.</p>
+                                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span></div>
+                            </a>
+                        </li>
+                        <li class="project reveal">
+                            <a href="#!">
+                                <span class="project__num">03</span>
+                                <div class="project__thumb"><img src="res/img/demo-image-02.jpg" alt="" loading="lazy" /></div>
+                                <h3 class="project__title">Project title</h3>
+                                <div class="project__meta">2024 <i class="fas fa-arrow-right"></i></div>
+                                <p class="project__desc">A short, one-line description of what this project does and why it's interesting.</p>
+                                <div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Contact -->
+        <section class="section contact-section" id="contact">
+            <div class="container px-4 px-lg-5">
+                <div class="wrap">
+                    <div class="section-eyebrow reveal">04 · Contact</div>
+                    <h2 class="section-title reveal" style="--d:.06s">Get in touch</h2>
+                    <a class="contact-email reveal" style="--d:.12s" href="mailto:joshua.j.zeng@gmail.com">joshua.j.zeng@gmail.com</a>
+                    <ul class="rows">
+                        <li class="row-item reveal">
+                            <div class="row-item__label">LinkedIn</div>
+                            <div class="row-item__value"><a class="text-link" href="https://www.linkedin.com/in/joshuazeng" target="_blank" rel="noopener">in/joshuazeng <i class="fas fa-external-link-alt"></i></a></div>
+                            <div class="row-item__meta"></div>
+                        </li>
+                        <li class="row-item reveal">
+                            <div class="row-item__label">GitHub</div>
+                            <div class="row-item__value"><a class="text-link" href="https://github.com/whoisjoshua" target="_blank" rel="noopener">whoisjoshua <i class="fas fa-external-link-alt"></i></a></div>
+                            <div class="row-item__meta"></div>
+                        </li>
+                        <li class="row-item reveal">
+                            <div class="row-item__label">Youtube</div>
+                            <div class="row-item__value"><a class="text-link" href="https://www.youtube.com/@ThatVibrato" target="_blank" rel="noopener">@ThatVibrato <i class="fas fa-external-link-alt"></i></a></div>
+                            <div class="row-item__meta"></div>
+                        </li>
+                        <li class="row-item reveal">
+                            <div class="row-item__label">Based in</div>
+                            <div class="row-item__value">San Diego, CA</div>
+                            <div class="row-item__meta"></div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Joshua Zeng 2021</div></footer>
+        <footer class="site-footer">
+            <div class="container px-4 px-lg-5">
+                <div class="wrap">
+                    <span>&copy; <span id="year">2026</span> Joshua Zeng</span>
+                    <a href="#page-top">Back to top <i class="fas fa-arrow-up"></i></a>
+                </div>
+            </div>
+        </footer>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
+        <script src="/js/career.js"></script>
         <script src="/js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
