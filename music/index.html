@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Cello and guitar covers by Joshua Zeng." />
+        <meta name="author" content="Joshua Zeng" />
+        <title>Music · jzeng.io</title>
+        <link rel="icon" type="image/png" href="/res/favicon.png" />
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet" />
+        <link href="/style/style-main.css" rel="stylesheet" />
+        <link href="/style/style-modern.css" rel="stylesheet" />
+        <link href="/style/hobbies.css" rel="stylesheet" />
+        <script>document.documentElement.classList.add('js');</script>
+    </head>
+    <body class="hobby-page">
+        <header class="h-bar">
+            <a class="h-bar__brand" href="/#hobbies"><i class="fas fa-arrow-left"></i> jzeng.io</a>
+            <nav aria-label="Hobbies">
+                <a href="/music/" aria-current="page">Music</a>
+                <a href="/art/">Art</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="h-hero" data-hero>
+                <div class="h-hero__bg" aria-hidden="true">
+                    <img src="https://i.ytimg.com/vi/-eZ6iptxaXg/maxresdefault.jpg" alt="" />
+                </div>
+                <div class="h-hero__inner">
+                    <p class="h-eyebrow h-fade" style="--d:.2s">Off the clock · <span id="music-count">Covers</span></p>
+                    <h1 class="h-title" data-split>Music</h1>
+                    <div class="h-hero__row">
+                        <p class="h-lede h-fade" style="--d:.55s">Cello and guitar covers: fingerstyle, electric, and the two layered together. Mostly J-pop, EDM, and worship songs, plus whatever's stuck in my head that week.</p>
+                        <span class="h-scroll h-fade" style="--d:.8s">Scroll</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="marquee" data-marquee aria-label="Cello, Fingerstyle, Electric guitar, Harmonics, J-pop, EDM, Worship">
+                <div class="marquee__track">
+                    <span>Cello</span><span>Fingerstyle</span><span>Electric guitar</span><span>Harmonics</span><span>J-pop</span><span>EDM</span><span>Worship</span>
+                </div>
+            </div>
+
+            <section class="h-pin" data-hscroll aria-labelledby="featured-title">
+                <div class="h-pin__sticky">
+                    <div class="h-section__head" style="padding-top:1rem">
+                        <h2 class="h-section__title" id="featured-title">Selected <em>covers</em></h2>
+                        <span class="h-count">Click to play</span>
+                    </div>
+                    <div class="h-pin__track" id="featured-track"></div>
+                    <div class="h-pin__progress" aria-hidden="true"><span></span></div>
+                </div>
+            </section>
+
+            <section class="h-section" aria-labelledby="archive-title">
+                <div class="h-section__head">
+                    <h2 class="h-section__title reveal" id="archive-title">Every <em>cover</em></h2>
+                    <div class="filters reveal" id="filters" role="group" aria-label="Filter by instrument"></div>
+                </div>
+                <ul class="archive" id="archive" data-preview></ul>
+            </section>
+
+            <section class="h-outro">
+                <p class="h-eyebrow reveal">More on YouTube</p>
+                <a class="h-outro__link reveal" href="https://www.youtube.com/@ThatVibrato" target="_blank" rel="noopener">@ThatVibrato <i class="fas fa-arrow-right"></i></a>
+                <div class="h-outro__next reveal">
+                    <a class="text-link" href="/art/">Next: Art <i class="fas fa-arrow-right"></i></a>
+                    <a class="text-link" href="/#hobbies">Back to jzeng.io</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container px-4 px-lg-5">
+                <div class="wrap">
+                    <span>&copy; <span id="year">2026</span> Joshua Zeng</span>
+                    <a href="#">Back to top <i class="fas fa-arrow-up"></i></a>
+                </div>
+            </div>
+        </footer>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+        <script src="/js/detail-dialog.js"></script>
+        <script src="/js/music.js"></script>
+        <script src="/js/hobbies.js"></script>
+    </body>
+</html>

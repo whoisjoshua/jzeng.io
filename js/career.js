@@ -93,11 +93,8 @@ const CAREER = [
 
 (function () {
     const list = document.getElementById("career-list");
-    const dialog = document.getElementById("exp-dialog");
     if (!list) return;
-
-    const esc = (s) =>
-        String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const esc = escHtml;
 
     const logo = (job) => job.logo
         ? `<div class="logo-tile${job.logoWide ? " logo-tile--wide" : ""}"><img src="${esc(job.logo)}" alt="${esc(job.company)} logo" loading="lazy" /></div>`
@@ -129,21 +126,14 @@ const CAREER = [
             </article>
         </li>`).join("");
 
-    if (!dialog || typeof dialog.showModal !== "function") return;
-
     // ---- Detail dialog ----
-    const panel = dialog.querySelector(".exp-dialog__panel");
-    const content = dialog.querySelector(".dlg-content");
-    const prevBtn = dialog.querySelector("[data-dir='-1']");
-    const nextBtn = dialog.querySelector("[data-dir='1']");
-    let current = 0;
-    let opener = null;
-    let closing = false;
-
-    const fill = (i) => {
-        const job = CAREER[i];
-        current = i;
-        content.innerHTML = `
+    const dlg = createDetailDialog({
+        dialog: document.getElementById("exp-dialog"),
+        count: CAREER.length,
+        label: (i) => CAREER[i].company,
+        render: (i) => {
+            const job = CAREER[i];
+            return `
             <div class="dlg-hero">${head(job, true)}<p class="exp-summary">${esc(job.summary)}</p></div>
             <div class="dlg-body">
                 <section>
@@ -163,74 +153,19 @@ const CAREER = [
                     ).join("")}</div>
                 </section>` : ""}
             </div>`;
-        const prev = CAREER[i - 1];
-        const next = CAREER[i + 1];
-        prevBtn.disabled = !prev;
-        nextBtn.disabled = !next;
-        prevBtn.querySelector("span").textContent = prev ? prev.company : "Newer";
-        nextBtn.querySelector("span").textContent = next ? next.company : "Older";
-        dialog.setAttribute("aria-label", job.company);
-    };
-
-    const open = (i, from) => {
-        opener = from || null;
-        closing = false;
-        fill(i);
-        dialog.showModal();
-        panel.scrollTop = 0;
-        requestAnimationFrame(() => dialog.classList.add("is-open"));
-    };
-
-    const close = () => {
-        if (!dialog.open || closing) return;
-        closing = true;
-        dialog.classList.remove("is-open");
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        setTimeout(() => {
-            dialog.close();
-            closing = false;
-            if (opener) opener.focus({ preventScroll: true });
-        }, reduce ? 0 : 260);
-    };
-
-    const step = (dir) => {
-        const target = current + dir;
-        if (target < 0 || target >= CAREER.length) return;
-        content.classList.add("is-swapping");
-        setTimeout(() => {
-            fill(target);
-            panel.scrollTop = 0;
-            content.classList.remove("is-swapping");
-        }, 180);
-    };
+        },
+    });
+    if (!dlg) return;
 
     list.addEventListener("click", (e) => {
         const card = e.target.closest(".exp-card");
-        if (card) open(Number(card.dataset.index), card);
+        if (card) dlg.open(Number(card.dataset.index), card);
     });
     list.addEventListener("keydown", (e) => {
         const card = e.target.closest(".exp-card");
         if (card && (e.key === "Enter" || e.key === " ")) {
             e.preventDefault();
-            open(Number(card.dataset.index), card);
+            dlg.open(Number(card.dataset.index), card);
         }
-    });
-
-    // One delegated handler survives Font Awesome swapping <i> icons for <svg>.
-    dialog.addEventListener("click", (e) => {
-        if (e.target === dialog || e.target.closest(".dlg-close")) {
-            close();
-            return;
-        }
-        const nav = e.target.closest(".dlg-nav button");
-        if (nav && !nav.disabled) step(Number(nav.dataset.dir));
-    });
-    dialog.addEventListener("cancel", (e) => {
-        e.preventDefault(); // animate instead of closing instantly on Esc
-        close();
-    });
-    dialog.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") step(-1);
-        if (e.key === "ArrowRight") step(1);
     });
 })();
