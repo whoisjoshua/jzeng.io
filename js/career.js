@@ -35,7 +35,7 @@ const CAREER = [
         stack: ["Jenkins", "TeamCity", "Bamboo", "Ansible", "Terraform", "Packer", "Python", "Flask", "C#", ".NET", "WPF", "Winforms", "Docker", "Selenium", "Nexus", "Artifactory", "Grafana", "PostgreSQL", "AWS", "Jaspersoft", "Tableau"],
     },
     {
-        company: "Driiven.ai",
+        company: "Drivven.ai",
         title: "Senior Software Engineer",
         dates: "Jan – Mar 2026",
         when: "2026",
