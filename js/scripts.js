@@ -60,72 +60,29 @@ window.addEventListener('DOMContentLoaded', event => {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /*
- * Seamless background loop.
- * Native `loop` hard-cuts from the last frame to the first, which reads as a stutter.
- * Two stacked <video>s play the same clip; shortly before the visible one ends the other
- * restarts from 0 and fades in on top, so the loop point becomes a slow dissolve.
+ * Hero background loop.
+ * res/video/hero-loop-*.mp4 has the crossfade baked in (its last 1.5s dissolve into its first
+ * frames), so plain native `loop` on one <video> is seamless with a single decoder.
+ * The video pauses while the hero is off screen so it isn't decoding behind the content.
  */
 function initSeamlessVideo() {
-    const FADE_SECONDS = 1.6; // keep in sync with the opacity transition in style-modern.css
-    const wrap = document.querySelector('.video-container');
-    if (!wrap) return;
-    const videos = wrap.querySelectorAll('video');
-    let current = videos[0];
-    let next = videos[1];
-    if (!current) return;
-
-    const reveal = () => current.classList.add('is-visible', 'is-front');
-    if (current.readyState >= 2) reveal();
-    else current.addEventListener('loadeddata', reveal, { once: true });
-
-    if (!next) return; // single video: just keep native loop
-    current.loop = false;
-
-    // Load the second copy only once the first can play, so they don't compete for bandwidth.
-    const loadNext = () => {
-        if (next.src) return;
-        next.src = current.currentSrc || current.querySelector('source').src;
-        next.load();
-    };
-    if (current.readyState >= 4) loadNext();
-    else current.addEventListener('canplaythrough', loadNext, { once: true });
-
-    let swapping = false;
-
-    const crossfade = () => {
-        if (swapping) return;
-        swapping = true;
-        const incoming = next;
-        const outgoing = current;
-        if (!incoming.src) loadNext();
-        incoming.currentTime = 0;
-        Promise.resolve(incoming.play()).then(() => {
-            incoming.classList.add('is-visible', 'is-front');
-            outgoing.classList.remove('is-front');
-            setTimeout(() => {
-                outgoing.classList.remove('is-visible');
-                outgoing.pause();
-                current = incoming;
-                next = outgoing;
-                swapping = false;
-            }, FADE_SECONDS * 1000 + 100);
-        }).catch(() => {
-            // Playback refused (e.g. power saving): fall back to a plain restart.
-            outgoing.currentTime = 0;
-            outgoing.play().catch(() => {});
-            swapping = false;
-        });
-    };
-
-    videos.forEach((v) => {
-        v.addEventListener('timeupdate', () => {
-            if (v !== current || !v.duration) return;
-            if (v.duration - v.currentTime <= FADE_SECONDS + 0.25) crossfade();
-        });
-        v.addEventListener('ended', () => {
-            if (v === current) crossfade();
-        });
-    });
+    const video = document.getElementById('bg-video');
+    if (!video) return;
+    const show = () => video.classList.add('is-playing');
+    if (prefersReducedMotion) {
+        video.removeAttribute('autoplay');
+        video.pause();
+        show(); // still frame (poster), no fade
+        return;
+    }
+    // Fade in from black on first playback, not on every loop or resume.
+    if (!video.paused && video.currentTime > 0) show();
+    else video.addEventListener('playing', show, { once: true });
+    if (!('IntersectionObserver' in window)) return;
+    new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) video.play().catch(show); // autoplay blocked: fade in the poster instead
+        else video.pause();
+    }).observe(video);
 }
 
 /* Fade/slide elements with .reveal into view as they enter the viewport. */

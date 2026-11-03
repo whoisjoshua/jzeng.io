@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Digital art by Joshua Zeng." />
+        <meta name="author" content="Joshua Zeng" />
+        <title>Art · jzeng.io</title>
+        <link rel="icon" type="image/png" href="/res/favicon.png" />
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet" />
+        <link href="/style/style-main.css" rel="stylesheet" />
+        <link href="/style/style-modern.css" rel="stylesheet" />
+        <link href="/style/hobbies.css" rel="stylesheet" />
+        <script>document.documentElement.classList.add('js');</script>
+    </head>
+    <body class="hobby-page">
+        <header class="h-bar">
+            <a class="h-bar__brand" href="/#hobbies"><i class="fas fa-arrow-left"></i> jzeng.io</a>
+            <nav aria-label="Hobbies">
+                <a href="/music/">Music</a>
+                <a href="/art/" aria-current="page">Art</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="h-hero" data-hero>
+                <div class="h-hero__bg h-hero__bg--gradient" aria-hidden="true"></div>
+                <div class="h-hero__inner">
+                    <p class="h-eyebrow h-fade" style="--d:.2s">Off the clock · Gallery</p>
+                    <h1 class="h-title" data-split>Art</h1>
+                    <div class="h-hero__row">
+                        <p class="h-lede h-fade" style="--d:.45s">Digital illustration and sketches, made in the evenings between builds.</p>
+                        <span class="h-scroll h-fade" style="--d:.7s">Scroll</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="marquee" data-marquee aria-label="Digital art, Illustration, Sketches, Color studies">
+                <div class="marquee__track">
+                    <span>Digital art</span><span>Illustration</span><span>Sketches</span><span>Color studies</span>
+                </div>
+            </div>
+
+            <section class="h-section" aria-labelledby="gallery-title" style="padding-bottom:clamp(8rem,20vh,12rem)">
+                <div class="h-section__head">
+                    <h2 class="h-section__title reveal" id="gallery-title">Selected <em>pieces</em></h2>
+                    <span class="h-count reveal">Click to enlarge</span>
+                </div>
+                <div class="gallery" id="gallery"></div>
+            </section>
+
+            <section class="h-outro">
+                <p class="h-eyebrow reveal">Keep exploring</p>
+                <a class="h-outro__link reveal" href="/music/">Music <i class="fas fa-arrow-right"></i></a>
+                <div class="h-outro__next reveal">
+                    <a class="text-link" href="/#hobbies">Back to jzeng.io</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container px-4 px-lg-5">
+                <div class="wrap">
+                    <span>&copy; <span id="year">2026</span> Joshua Zeng</span>
+                    <a href="#">Back to top <i class="fas fa-arrow-up"></i></a>
+                </div>
+            </div>
+        </footer>
+        <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+        <script src="/js/detail-dialog.js"></script>
+        <script src="/js/art.js"></script>
+        <script src="/js/hobbies.js"></script>
+    </body>
+</html>

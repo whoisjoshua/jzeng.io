@@ -99,15 +99,17 @@ body {
   z-index: 1;
 }
 .video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Fade in from black once playback actually starts (class added in js/scripts.js) */
+.js .video-container video {
   opacity: 0;
-  transition: opacity 1.6s ease-in-out; /* keep in sync with FADE_SECONDS in scripts.js */
-  will-change: opacity;
+  transition: opacity 2s ease;
 }
-.video-container video.is-visible {
+.js .video-container video.is-playing {
   opacity: 1;
-}
-.video-container video.is-front {
-  z-index: 1;
 }
 
 /* ---------- Shared ---------- */
@@ -825,6 +827,177 @@ html:has(.exp-dialog[open]) {
   .project__desc, .project .tags { grid-column: 3 / span 2; }
 }
 
+.project__thumb {
+  position: relative;
+}
+.project__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.project__play :is(i, svg) {
+  width: 44px;
+  height: 44px;
+  padding: 14px 13px 14px 15px;
+  border-radius: 50%;
+  background: rgba(10, 12, 13, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--ink);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transform: scale(0.85);
+  transition: transform 0.4s var(--ease);
+}
+.project a:hover .project__play,
+.project a:focus-visible .project__play {
+  opacity: 1;
+}
+.project a:hover .project__play :is(i, svg) {
+  transform: none;
+}
+
+/* ---------- Project dialog: video on top ---------- */
+.exp-dialog--media {
+  width: min(860px, calc(100vw - 2rem));
+}
+.dlg-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-bottom: 1px solid var(--line);
+}
+.dlg-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.exp-dialog--media .dlg-close {
+  background: rgba(10, 12, 13, 0.7);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.proj-head h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  margin: 0;
+  color: var(--ink);
+}
+.proj-head .dates {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-top: 0.25rem;
+}
+
+/* ---------- Hobbies: two big doors to /music and /art ---------- */
+.hobby-panels {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .hobby-panels {
+    grid-template-columns: 1.25fr 1fr;
+  }
+}
+.hobby-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: clamp(260px, 42vw, 420px);
+  padding: 1.75rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--ink);
+  text-decoration: none;
+  background: #0f1213;
+  transition: border-color 0.4s ease;
+}
+.hobby-panel:hover,
+.hobby-panel:focus-visible {
+  color: var(--ink);
+  border-color: rgba(127, 200, 191, 0.45);
+}
+.hobby-panel__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100%;
+  opacity: 0.32;
+  filter: grayscale(1);
+  transform: scale(1.06);
+  transition: opacity 0.6s ease, filter 0.6s ease, transform 1.2s var(--ease);
+}
+.hobby-panel__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hobby-panel__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 12, 13, 0.95) 10%, rgba(10, 12, 13, 0.2) 70%);
+}
+.hobby-panel__media--gradient {
+  display: block;
+  background:
+    radial-gradient(60% 70% at 25% 30%, rgba(127, 200, 191, 0.55), transparent 70%),
+    radial-gradient(50% 60% at 80% 70%, rgba(201, 120, 255, 0.45), transparent 70%),
+    radial-gradient(40% 50% at 60% 15%, rgba(255, 170, 120, 0.35), transparent 70%);
+  filter: saturate(0.5);
+  opacity: 0.55;
+}
+.hobby-panel:hover .hobby-panel__media,
+.hobby-panel:focus-visible .hobby-panel__media {
+  opacity: 0.75;
+  filter: none;
+  transform: scale(1);
+}
+.hobby-panel__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.hobby-panel__word {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3.5rem, 11vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin: 0.35rem 0 1rem;
+  transition: transform 0.6s var(--ease);
+}
+.hobby-panel:hover .hobby-panel__word {
+  transform: translateX(0.4rem);
+}
+.hobby-panel__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+}
+.hobby-panel__cta :is(i, svg) {
+  color: var(--accent);
+  transition: transform 0.4s var(--ease);
+}
+.hobby-panel:hover .hobby-panel__cta :is(i, svg) {
+  transform: translateX(4px);
+}
+
 /* ---------- Contact ---------- */
 .contact-section {
   padding: 7rem 0 5rem;
@@ -893,7 +1066,9 @@ html:has(.exp-dialog[open]) {
   .exp-more,
   .exp-more__inner,
   .project a,
-  .project__thumb img {
+  .project__thumb img,
+  .hobby-panel__media,
+  .hobby-panel__word {
     transition: none;
   }
 }

@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#careers">Career</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -44,11 +45,11 @@
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="video-container">
-                    <!-- Two copies are crossfaded at the loop point by js/scripts.js for a seamless loop -->
-                    <video autoplay loop muted playsinline preload="auto" id="bg-video" aria-hidden="true">
-                        <source src="https://media.githubusercontent.com/media/whoisjoshua/media/main/bg_drop_4k.mp4" type="video/mp4">
+                    <!-- The crossfade is baked into the file (end blends into start), so a single native loop is seamless -->
+                    <video autoplay loop muted playsinline preload="auto" id="bg-video" poster="/res/video/hero-poster.jpg" aria-hidden="true">
+                        <source src="/res/video/hero-loop-1080.mp4" type="video/mp4" media="(min-width: 900px)">
+                        <source src="/res/video/hero-loop-720.mp4" type="video/mp4">
                     </video>
-                    <video muted playsinline preload="auto" aria-hidden="true"></video>
                 </div>
                 <div class="d-flex justify-content-center z-index-100">
                     <div class="text-center">
@@ -132,8 +133,8 @@
                     <button class="dlg-close" type="button" aria-label="Close"><i class="fas fa-times"></i></button>
                     <div class="dlg-content"></div>
                     <div class="dlg-nav">
-                        <button type="button" data-dir="-1"><i class="fas fa-arrow-left"></i> <span>Newer</span></button>
-                        <button type="button" data-dir="1"><span>Older</span> <i class="fas fa-arrow-right"></i></button>
+                        <button type="button" data-dir="-1" data-fallback="Newer"><i class="fas fa-arrow-left"></i> <span>Newer</span></button>
+                        <button type="button" data-dir="1" data-fallback="Older"><span>Older</span> <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
             </dialog>
@@ -144,42 +145,45 @@
                 <div class="wrap">
                     <div class="section-eyebrow reveal">03 · Projects</div>
                     <h2 class="section-title reveal" style="--d:.06s">Selected work</h2>
-                    <!--
-                        To add a project, copy one <li class="project"> block.
-                        Swap the href, image, title, description, tags and year.
-                    -->
-                    <ul class="project-list">
-                        <li class="project reveal">
-                            <a href="#!">
-                                <span class="project__num">01</span>
-                                <div class="project__thumb"><img src="res/img/bg-masthead.jpg" alt="" loading="lazy" /></div>
-                                <h3 class="project__title">Project title</h3>
-                                <div class="project__meta">2026 <i class="fas fa-arrow-right"></i></div>
-                                <p class="project__desc">A short, one-line description of what this project does and why it's interesting.</p>
-                                <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Docker</span></div>
-                            </a>
-                        </li>
-                        <li class="project reveal">
-                            <a href="#!">
-                                <span class="project__num">02</span>
-                                <div class="project__thumb"><img src="res/img/demo-image-01.jpg" alt="" loading="lazy" /></div>
-                                <h3 class="project__title">Project title</h3>
-                                <div class="project__meta">2025 <i class="fas fa-arrow-right"></i></div>
-                                <p class="project__desc">A short, one-line description of what this project does and why it's interesting.</p>
-                                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span></div>
-                            </a>
-                        </li>
-                        <li class="project reveal">
-                            <a href="#!">
-                                <span class="project__num">03</span>
-                                <div class="project__thumb"><img src="res/img/demo-image-02.jpg" alt="" loading="lazy" /></div>
-                                <h3 class="project__title">Project title</h3>
-                                <div class="project__meta">2024 <i class="fas fa-arrow-right"></i></div>
-                                <p class="project__desc">A short, one-line description of what this project does and why it's interesting.</p>
-                                <div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span></div>
-                            </a>
-                        </li>
-                    </ul>
+                    <!-- Rows are rendered from the PROJECTS data in js/projects.js -->
+                    <ul class="project-list" id="project-list"></ul>
+                </div>
+            </div>
+            <dialog class="exp-dialog exp-dialog--media" id="proj-dialog">
+                <div class="exp-dialog__panel">
+                    <button class="dlg-close" type="button" aria-label="Close"><i class="fas fa-times"></i></button>
+                    <div class="dlg-content"></div>
+                    <div class="dlg-nav">
+                        <button type="button" data-dir="-1" data-fallback="Previous"><i class="fas fa-arrow-left"></i> <span>Previous</span></button>
+                        <button type="button" data-dir="1" data-fallback="Next"><span>Next</span> <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </dialog>
+        </section>
+        <!-- Hobbies -->
+        <section class="section hobbies-section" id="hobbies">
+            <div class="container px-4 px-lg-5">
+                <div class="wrap">
+                    <div class="section-eyebrow reveal">04 · Off the clock</div>
+                    <h2 class="section-title reveal" style="--d:.06s">Things I make for fun</h2>
+                    <div class="hobby-panels">
+                        <a class="hobby-panel reveal" href="/music/" style="--d:.1s">
+                            <div class="hobby-panel__media" aria-hidden="true">
+                                <img src="https://i.ytimg.com/vi/-eZ6iptxaXg/mqdefault.jpg" alt="" loading="lazy" />
+                                <img src="https://i.ytimg.com/vi/GWCL2WvwMEE/mqdefault.jpg" alt="" loading="lazy" />
+                                <img src="https://i.ytimg.com/vi/M3VDz18FtH8/mqdefault.jpg" alt="" loading="lazy" />
+                            </div>
+                            <span class="hobby-panel__eyebrow">Cello &amp; guitar covers</span>
+                            <span class="hobby-panel__word">Music</span>
+                            <span class="hobby-panel__cta">Listen <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a class="hobby-panel hobby-panel--art reveal" href="/art/" style="--d:.18s">
+                            <div class="hobby-panel__media hobby-panel__media--gradient" aria-hidden="true"></div>
+                            <span class="hobby-panel__eyebrow">Digital art</span>
+                            <span class="hobby-panel__word">Art</span>
+                            <span class="hobby-panel__cta">View gallery <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -187,7 +191,7 @@
         <section class="section contact-section" id="contact">
             <div class="container px-4 px-lg-5">
                 <div class="wrap">
-                    <div class="section-eyebrow reveal">04 · Contact</div>
+                    <div class="section-eyebrow reveal">05 · Contact</div>
                     <h2 class="section-title reveal" style="--d:.06s">Get in touch</h2>
                     <a class="contact-email reveal" style="--d:.12s" href="mailto:joshua.j.zeng@gmail.com">joshua.j.zeng@gmail.com</a>
                     <ul class="rows">
@@ -229,7 +233,9 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
+        <script src="/js/detail-dialog.js"></script>
         <script src="/js/career.js"></script>
+        <script src="/js/projects.js"></script>
         <script src="/js/scripts.js"></script>
     </body>
 </html>
