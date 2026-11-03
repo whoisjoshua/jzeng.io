@@ -32,7 +32,7 @@ const CAREER = [
             "Developed automated contract code-count reports with Grafana and AWS-loaded Postgres entity-relationship models.",
             "Spearheaded modernization of a legacy automated pilot-training test suite to current SIL testing standards, integrating it with a closed-loop aircraft simulator.",
         ],
-        stack: ["Jenkins", "TeamCity", "Bamboo", "Ansible", "Terraform", "Packer", "Python", "Flask", "C#", ".NET", "WPF", "Docker", "Selenium", "Nexus", "Artifactory", "Grafana", "PostgreSQL", "AWS", "Jaspersoft"],
+        stack: ["Jenkins", "TeamCity", "Bamboo", "Ansible", "Terraform", "Packer", "Python", "Flask", "C#", ".NET", "WPF", "Winforms", "Docker", "Selenium", "Nexus", "Artifactory", "Grafana", "PostgreSQL", "AWS", "Jaspersoft", "Tableau"],
     },
     {
         company: "Driiven.ai",
@@ -41,9 +41,9 @@ const CAREER = [
         when: "2026",
         summary: "Full-stack features for an ad customer platform.",
         highlights: [
-            "Implemented full-stack features for an ad customer platform displaying margin and financial report metrics.",
+            "Implemented full-stack features for an ad customer platform displaying margin and financial report metrics with Django.",
         ],
-        stack: ["Full-stack"],
+        stack: ["Full-stack", "Django", "Python"],
     },
     {
         company: "BAE Systems",
@@ -58,7 +58,7 @@ const CAREER = [
             "Developed a Windows packet-comparison utility (C#/.NET) and a C++ port-security app with PnP drivers.",
             "Designed the front-end UI/UX for the hardware and digital circuit design of an armament tester, per armament specifications.",
         ],
-        stack: ["C++", "C#", ".NET", "iSCSI", "Multithreading", "Networking", "PnP drivers"],
+        stack: ["C++", "C#", ".NET", "iSCSI", "Multithreading", "Networking", "PnP drivers", "Digital Circuit Design"],
     },
     {
         company: "Qualcomm",
@@ -72,7 +72,7 @@ const CAREER = [
             "Engineered a C#/.NET desktop suite for camera Auto Focus and Auto Exposure Control tuning, pairing a backend that organizes tuning data with reports and visualizations for hardware calibration teams.",
             "Developed a lens-movement convergence simulation that maps tuning metrics and charts targets against raw data, with an integrated XML editor for faster tuning cycles.",
         ],
-        stack: ["C#", ".NET", "XML", "Data visualization"],
+        stack: ["C#", ".NET", "XML", "Data visualization", "3A Camera", "WinForms", "WPF"],
     },
     {
         company: "Google",
@@ -87,7 +87,7 @@ const CAREER = [
             "Wrote a color-metric tuning parser in C with an interface to directly adjust tuning parameters the codebase lacked.",
             "Conducted 3A KPI image-quality, LED, video (EIS), and power tests, using simulation and tuning software to identify camera bugs, including hard-artifact scenes.",
         ],
-        stack: ["Python", "OpenCV", "wxPython", "C"],
+        stack: ["Python", "OpenCV", "wxPython", "C" ,"3A Camerea Testing"],
     },
 ];
 
