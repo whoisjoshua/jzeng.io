@@ -51,6 +51,7 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    initNavReveal(mainNav, navbarToggler);
     initSeamlessVideo();
     initReveal();
     initTimelineProgress();
@@ -78,11 +79,72 @@ function initSeamlessVideo() {
     // Fade in from black on first playback, not on every loop or resume.
     if (!video.paused && video.currentTime > 0) show();
     else video.addEventListener('playing', show, { once: true });
+    watchVideoStalls(video);
     if (!('IntersectionObserver' in window)) return;
     new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) video.play().catch(show); // autoplay blocked: fade in the poster instead
         else video.pause();
     }).observe(video);
+}
+
+/*
+ * Some Windows Chrome/Edge setups freeze the hero loop (often at the loop point) while the
+ * element still reports itself as playing. Once a second, check that playback is actually
+ * advancing; if it has sat still for ~2s, nudge it with a tiny seek (wrapping to the start
+ * when stuck at the end), which makes the decoder resume.
+ */
+function watchVideoStalls(video) {
+    const STALL_TICKS = 2; // seconds without progress before nudging
+    let last = -1;
+    let still = 0;
+    setInterval(() => {
+        // Only judge playback we expect to be running: not paused (off screen), tab visible, data loaded.
+        if (video.paused || document.hidden || video.readyState < 2 || !video.duration) {
+            last = -1;
+            still = 0;
+            return;
+        }
+        const t = video.currentTime;
+        if (t !== last) {
+            last = t;
+            still = 0;
+            return;
+        }
+        if (++still < STALL_TICKS) return;
+        still = 0;
+        last = -1;
+        const atEnd = video.duration - t < 0.25;
+        video.currentTime = atEnd ? 0 : t + 0.04;
+        video.play().catch(() => {});
+    }, 1000);
+}
+
+/*
+ * Hide the section links while the hero video is on screen; fade them in once the
+ * masthead has scrolled up behind the navbar, and hide them again back at the top.
+ */
+function initNavReveal(nav, toggler) {
+    const hero = document.querySelector('.masthead');
+    if (!nav) return;
+    const menu = document.getElementById('navbarResponsive');
+    const set = (past) => {
+        nav.classList.toggle('is-past-hero', past);
+        // Close an open phone menu rather than leave it showing invisible links.
+        if (!past && menu && menu.classList.contains('show') && toggler) toggler.click();
+    };
+    if (!hero) {
+        set(true);
+        return;
+    }
+    let past = null;
+    const update = () => {
+        // "Past" = the hero's bottom edge has slid up behind the navbar.
+        const now = hero.getBoundingClientRect().bottom <= nav.offsetHeight;
+        if (now !== past) set((past = now));
+    };
+    document.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
 }
 
 /* Fade/slide elements with .reveal into view as they enter the viewport. */
