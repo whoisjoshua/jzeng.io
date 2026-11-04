@@ -11582,8 +11582,8 @@ filter: blur(9px);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter:brightness(50%);
-  filter:sepia(1) hue-rotate(149deg);
+  /* Tint (sepia + hue-rotate 149deg) is baked into res/video/*. A CSS filter here forces
+     Windows Chrome/Edge off the hardware video overlay path and causes stutter. */
 }
 
 .masthead {
