@@ -49,6 +49,26 @@ body {
 #mainNav .nav-link.active {
   color: var(--ink);
 }
+/* Section links (and the phone "Menu" toggle) stay hidden over the hero video and fade in,
+   one after another, once the reader scrolls past it (.is-past-hero set in js/scripts.js). */
+.js #mainNav .nav-item,
+.js #mainNav .navbar-toggler {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.9s ease, transform 0.9s var(--ease), visibility 0s linear 0.9s;
+}
+.js #mainNav.is-past-hero .nav-item,
+.js #mainNav.is-past-hero .navbar-toggler {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.9s ease var(--d, 0s), transform 0.9s var(--ease) var(--d, 0s), visibility 0s;
+}
+#mainNav .nav-item:nth-child(2) { --d: 0.12s; }
+#mainNav .nav-item:nth-child(3) { --d: 0.24s; }
+#mainNav .nav-item:nth-child(4) { --d: 0.36s; }
+#mainNav .nav-item:nth-child(5) { --d: 0.48s; }
 @media (max-width: 991.98px) {
   #mainNav {
     background: rgba(10, 12, 13, 0.85);
@@ -80,6 +100,22 @@ body {
   #mainNav.navbar-shrink .nav-link.active {
     color: var(--ink);
     border-bottom: 0;
+  }
+}
+
+/* Windows: a backdrop-filter blur sampling a playing <video> is expensive in Chrome/Edge
+   and can make the hero stutter. Use a near-opaque solid bar instead (class set in index.html). */
+.is-windows #mainNav,
+.is-windows #mainNav.navbar-shrink {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.is-windows #mainNav.navbar-shrink {
+  background: rgba(10, 12, 13, 0.94);
+}
+@media (max-width: 991.98px) {
+  .is-windows #mainNav {
+    background: rgba(10, 12, 13, 0.94);
   }
 }
 
@@ -860,8 +896,12 @@ html:has(.exp-dialog[open]) {
 }
 
 /* ---------- Project dialog: video on top ---------- */
-.exp-dialog--media {
-  width: min(860px, calc(100vw - 2rem));
+/* Wider on tablets/desktop only; scoped so it doesn't override the phone bottom-sheet
+   width (100vw) above, which left the sheet pinned left with a 2rem gap on the right. */
+@media (min-width: 576px) {
+  .exp-dialog--media {
+    width: min(860px, calc(100vw - 2rem));
+  }
 }
 .dlg-video {
   position: relative;
@@ -1061,6 +1101,8 @@ html:has(.exp-dialog[open]) {
     transform: none;
     transition: none;
   }
+  .js #mainNav .nav-item,
+  .js #mainNav .navbar-toggler,
   .exp-card,
   .exp-dialog__panel,
   .exp-more,

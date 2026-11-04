@@ -18,7 +18,13 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/style/style-main.css" rel="stylesheet" />
         <link href="/style/style-modern.css" rel="stylesheet" />
-        <script>document.documentElement.classList.add('js');</script>
+        <script>
+            document.documentElement.classList.add('js');
+            // Windows gets lighter effects over the hero video (see .is-windows in style-modern.css).
+            if (/Windows/.test(((navigator.userAgentData && navigator.userAgentData.platform) || '') + ' ' + navigator.userAgent)) {
+                document.documentElement.classList.add('is-windows');
+            }
+        </script>
 
     </head>
     <body id="page-top">
