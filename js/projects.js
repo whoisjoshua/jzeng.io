@@ -43,6 +43,7 @@ const PROJECTS = [
             "Connected a web app that plays each note on a virtual piano and checks it against the song.",
         ],
         stack: ["Arduino", "Python", "Audio processing", "Haptics", "Web app"],
+        links: [{ label: "GitHub repo", url: "https://github.com/whoisjoshua/bach2basics" }],
     },
     {
         title: "Grocery Express",
