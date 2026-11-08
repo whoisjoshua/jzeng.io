@@ -7,12 +7,30 @@
  *   context     string   optional line under the title in the popup (course, team size…)
  *   thumb       string   path to the thumbnail image
  *   youtube     string   YouTube video id (the part after watch?v=); embedded in the popup
+ *   site        string   live URL; without a youtube id, the popup shows the thumbnail as a
+ *                        clickable preview that opens this URL
  *   summary     string   one/two sentence description shown in the list and popup
  *   highlights  [string] bullet points of what you did (popup)
  *   stack       [string] tech tags (first four in the list, all in the popup)
  *   links       [{ label, url }]  optional extra links (repo, paper…)
  */
 const PROJECTS = [
+    {
+        title: "Ztock",
+        year: "2026",
+        context: "Personal project · static web app",
+        thumb: "res/img/projects/ztock.jpg",
+        site: "https://zstock.jzeng.io",
+        summary: "A stock dashboard for learning the market that grades 16 technical and machine-learning techniques A–F on real data they never trained on.",
+        highlights: [
+            "Built a fully static dashboard (plain HTML, CSS and ES modules, no backend or build step) hosted on GitHub Pages.",
+            "Implemented 16 techniques from scratch, including SMA/EMA crossovers, RSI, MACD, Bollinger Bands, OBV, logistic regression, k-nearest neighbors, a neural network (MLP), k-means regimes and an ensemble vote.",
+            "Backtested every technique on held-out data with hit rate vs. baseline, a z-score luck check, strategy vs. buy & hold, Sharpe ratio and an A–F grade.",
+            "Blended 11 factors (valuation, growth, momentum, earnings surprises, analysts, news sentiment and the models that beat their baseline) into a bull/bear confidence score.",
+            "Streamed live prices over Finnhub's WebSocket and rate-limited and cached REST calls to stay within free API tiers.",
+        ],
+        stack: ["JavaScript", "Machine learning", "Chart.js", "Finnhub API", "GitHub Pages"],
+    },
     {
         title: "ReMemVR",
         year: "2025",
@@ -68,14 +86,15 @@ const PROJECTS = [
     const watchUrl = (p) => `https://www.youtube.com/watch?v=${encodeURIComponent(p.youtube)}`;
     const pad = (n) => String(n).padStart(2, "0");
 
-    // Each row is a real link to YouTube, so it still works without JS or with ctrl/cmd-click.
+    // Each row is a real link (YouTube or the live site), so it still works without JS or with ctrl/cmd-click.
     list.innerHTML = PROJECTS.map((p, i) => `
         <li class="project reveal">
-            <a href="${p.youtube ? watchUrl(p) : "#!"}" target="_blank" rel="noopener" data-index="${i}" aria-haspopup="dialog">
+            <a href="${esc(p.youtube ? watchUrl(p) : p.site || "#!")}" target="_blank" rel="noopener" data-index="${i}" aria-haspopup="dialog">
                 <span class="project__num">${pad(i + 1)}</span>
                 <div class="project__thumb">
                     <img src="${esc(p.thumb)}" alt="${esc(p.title)} demo" loading="lazy" />
-                    ${p.youtube ? `<span class="project__play" aria-hidden="true"><i class="fas fa-play"></i></span>` : ""}
+                    ${p.youtube ? `<span class="project__play" aria-hidden="true"><i class="fas fa-play"></i></span>`
+                        : p.site ? `<span class="project__play" aria-hidden="true"><i class="fas fa-external-link-alt"></i></span>` : ""}
                 </div>
                 <h3 class="project__title">${esc(p.title)}</h3>
                 <div class="project__meta">${esc(p.year)} <i class="fas fa-arrow-right"></i></div>
@@ -92,6 +111,7 @@ const PROJECTS = [
             const p = PROJECTS[i];
             const links = [
                 ...(p.youtube ? [{ label: "Watch on YouTube", url: watchUrl(p) }] : []),
+                ...(p.site ? [{ label: "Open live site", url: p.site }] : []),
                 ...(p.links || []),
             ];
             return `
@@ -101,7 +121,11 @@ const PROJECTS = [
                         title="${esc(p.title)} video" loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
-            </div>` : ""}
+            </div>` : p.site ? `
+            <a class="dlg-video dlg-preview" href="${esc(p.site)}" target="_blank" rel="noopener">
+                <img src="${esc(p.thumb)}" alt="Screenshot of ${esc(p.title)}" />
+                <span class="dlg-preview__cta">Open ${esc(p.site.replace(/^https?:\/\//, ""))} <i class="fas fa-external-link-alt"></i></span>
+            </a>` : ""}
             <div class="dlg-hero">
                 <div class="proj-head">
                     <h3>${esc(p.title)}</h3>
