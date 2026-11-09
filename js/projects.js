@@ -17,6 +17,24 @@
  */
 const PROJECTS = [
     {
+        title: "Culinary Manifesto",
+        year: "2026",
+        context: "Personal project · static web app",
+        thumb: "res/img/projects/culinary-manifesto.jpg",
+        site: "https://cook.jzeng.io",
+        summary: "My personal cookbook: recipes with tap-to-check ingredients and steps, a scaler and unit converter, kitchen timers, and a list of dishes I'm manifesting next.",
+        highlights: [
+            "Built a fully static site (plain HTML, CSS and JavaScript, no build step) with a hash router and page transitions, hosted on GitHub Pages.",
+            "Made ingredients and steps tappable checklists that save progress per recipe, with a cook mode that follows the current step and keeps the screen awake.",
+            "Wrote a quantity parser that scales amounts as kitchen fractions (¾ cup at ½× becomes 6 tbsp) and converts between metric, US and °F/°C.",
+            "Turned times in steps into one-tap kitchen timers with a chime, and added tap-to-translate pinyin and English for Chinese terms and herbs.",
+            "Designed light, dark and a warm “night” theme, a phone layout with a bottom tab bar, and offline support as an installable web app.",
+        ],
+        stack: ["JavaScript", "HTML/CSS", "PWA", "GitHub Pages"],
+        assist: "Built with help from Claude (Anthropic) as an AI coding assistant.",
+        links: [{ label: "GitHub repo", url: "https://github.com/whoisjoshua/culinary-manifesto" }],
+    },
+    {
         title: "Ztock",
         year: "2026",
         context: "Personal project · static web app",
