@@ -13,6 +13,7 @@
  *   highlights  [string] bullet points of what you did (popup)
  *   stack       [string] tech tags (first four in the list, all in the popup)
  *   links       [{ label, url }]  optional extra links (repo, paper…)
+ *   assist      string   optional note in the popup about tools that helped build it
  */
 const PROJECTS = [
     {
@@ -20,7 +21,7 @@ const PROJECTS = [
         year: "2026",
         context: "Personal project · static web app",
         thumb: "res/img/projects/ztock.jpg",
-        site: "https://zstock.jzeng.io",
+        site: "https://ztock.jzeng.io",
         summary: "A stock dashboard for learning the market that grades 16 technical and machine-learning techniques A–F on real data they never trained on.",
         highlights: [
             "Built a fully static dashboard (plain HTML, CSS and ES modules, no backend or build step) hosted on GitHub Pages.",
@@ -30,6 +31,26 @@ const PROJECTS = [
             "Streamed live prices over Finnhub's WebSocket and rate-limited and cached REST calls to stay within free API tiers.",
         ],
         stack: ["JavaScript", "Machine learning", "Chart.js", "Finnhub API", "GitHub Pages"],
+        assist: "Built with help from Claude (Anthropic) as an AI coding assistant.",
+    },
+    {
+        title: "Relicwise",
+        year: "2026",
+        context: "Personal project · static web app",
+        thumb: "res/img/projects/relicwise.jpg",
+        site: "https://relicwise.jzeng.io",
+        summary: "A relic analyzer for Honkai: Star Rail that grades every relic for all 93 characters, predicts upgrade odds and scans relics straight off your screen.",
+        highlights: [
+            "Built a fully static site (plain HTML, CSS and ES modules, no build step) backed by a small Cloudflare Worker proxy for the Enka.Network and HoYoverse APIs.",
+            "Scored relics in max-roll units from their exact substat rolls, then ranked each piece across the whole roster to find its best owner.",
+            "Simulated 3,000 drops per main stat for an “X% of drops” percentile, and calculated exact multinomial upgrade odds to give unlevelled relics a Keeper / Level it / Gamble / Fodder verdict.",
+            "Wrote an in-browser OCR scanner (Tesseract.js + WebAssembly) that works at any resolution and checks every number against the game's roll table to repair OCR misreads.",
+            "Measured warp luck as a percentile against 4,000 simulated accounts, and calculated exact speed breakpoints from action-value math.",
+            "Automated a weekly GitHub Action that rebuilds game and build data and opens a pull request for review.",
+        ],
+        stack: ["JavaScript", "Tesseract.js", "Cloudflare Workers", "Simulation", "GitHub Actions"],
+        assist: "Built with help from Claude (Anthropic) as an AI coding assistant.",
+        links: [{ label: "GitHub repo", url: "https://github.com/whoisjoshua/relicwise" }],
     },
     {
         title: "ReMemVR",
@@ -132,6 +153,7 @@ const PROJECTS = [
                     <div class="dates">${esc(p.year)}${p.context ? ` · ${esc(p.context)}` : ""}</div>
                 </div>
                 <p class="exp-summary">${esc(p.summary)}</p>
+                ${p.assist ? `<p class="dlg-assist"><i class="fas fa-robot" aria-hidden="true"></i> ${esc(p.assist)}</p>` : ""}
             </div>
             <div class="dlg-body">
                 <section>
