@@ -123,6 +123,22 @@ body {
 .masthead {
   background: #000;
 }
+
+/* Hero name on phones and tablets: the base theme only makes it bold from 992px up,
+   so below that it was weight 500 at a fixed size. Scale it with the screen instead. */
+@media (max-width: 991.98px) {
+  .masthead h1 {
+    font-size: clamp(2.4rem, 10.5vw, 5.5rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+  }
+  .masthead h2 {
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+}
 .masthead::after {
   content: "";
   position: absolute;
@@ -450,6 +466,10 @@ body {
 .logo-tile--wide {
   width: 84px;
   padding: 5px;
+}
+.logo-tile--full {
+  padding: 0;
+  background: transparent;
 }
 .logo-tile--text {
   background: rgba(255, 255, 255, 0.08);

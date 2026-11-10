@@ -8,6 +8,7 @@
  *   when        string   short range shown beside the timeline node
  *   logo        string   optional path to logo image (falls back to the company's initial)
  *   logoWide    boolean  optional; use a wider tile for very wide logos
+ *   logoFull    boolean  optional; the logo is already an app-style icon, so it fills the tile
  *   meta        string   optional line shown in the popup (e.g. "via Manpower")
  *   summary     string   one-liner revealed on hover and shown in the popup
  *   highlights  [string] bullet points (first two preview on hover, all in the popup)
@@ -39,6 +40,8 @@ const CAREER = [
         title: "Senior Software Engineer",
         dates: "Jan – Mar 2026",
         when: "2026",
+        logo: "res/img/career/drivven-logo.png",
+        logoFull: true,
         summary: "Full-stack features for an ad customer platform.",
         highlights: [
             "Implemented full-stack features for an ad customer platform displaying margin and financial report metrics with Django.",
@@ -97,7 +100,7 @@ const CAREER = [
     const esc = escHtml;
 
     const logo = (job) => job.logo
-        ? `<div class="logo-tile${job.logoWide ? " logo-tile--wide" : ""}"><img src="${esc(job.logo)}" alt="${esc(job.company)} logo" loading="lazy" /></div>`
+        ? `<div class="logo-tile${job.logoWide ? " logo-tile--wide" : ""}${job.logoFull ? " logo-tile--full" : ""}"><img src="${esc(job.logo)}" alt="${esc(job.company)} logo" loading="lazy" /></div>`
         : `<div class="logo-tile logo-tile--text" aria-hidden="true">${esc(job.company.charAt(0))}</div>`;
 
     const head = (job, withMeta) => `
